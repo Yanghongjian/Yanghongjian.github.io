@@ -20,13 +20,84 @@
   </entry>
   <entry>
     <title>myfirstblog</title>
-    <url>/2021/05/16/myfirstblog/</url>
+    <url>/2022/02/16/myfirstblog/</url>
     <content><![CDATA[<p>你好世界</p>
 ]]></content>
       <tags>
         <tag>测试</tag>
         <tag>测试2</tag>
         <tag>测试3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端基础知识二刷之html</title>
+    <url>/2022/03/30/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C%E5%88%B7%E4%B9%8Bhtml/</url>
+    <content><![CDATA[<h1 id="html的创建"><a href="#html的创建" class="headerlink" title="html的创建"></a>html的创建</h1><p>​    蒂姆伯纳斯李 万维网之父 1991 w3c 万维网联盟</p>
+<h1 id="HTML的三大部分"><a href="#HTML的三大部分" class="headerlink" title="HTML的三大部分"></a>HTML的三大部分</h1><p>​    结构html、表现css、行为js</p>
+<h1 id="html的基本结构"><a href="#html的基本结构" class="headerlink" title="html的基本结构"></a>html的基本结构</h1><p>​    html&gt;head&gt;title+body</p>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><!-- -->
+
+<h1 id="标签中的属性"><a href="#标签中的属性" class="headerlink" title="标签中的属性"></a>标签中的属性</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是 <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;yellow&quot;</span> <span class="attr">size</span>=<span class="string">&quot;3&quot;</span>&gt;</span>第三个<span class="tag">&lt;/<span class="name">font</span>&gt;</span>网页<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>font 已不再建议使用</p>
+<h1 id="网页的版本迭代"><a href="#网页的版本迭代" class="headerlink" title="网页的版本迭代"></a><strong>网页的版本迭代</strong></h1><p>HTML4</p>
+<p>XHTML2.0</p>
+<p>HTML5</p>
+<h1 id="头部的设置"><a href="#头部的设置" class="headerlink" title="头部的设置"></a>头部的设置</h1><p>文档声明（doctype)</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span> 放在最前面，标志网页的版本</span><br></pre></td></tr></table></figure>
+
+<p>​                 <img src="https://docimg2.docs.qq.com/image/3IOjKa18271k3f5VRzW14g.png?w=519&h=122" alt="img">        </p>
+<p><mate charset="utf-8"> 设置编码格式，放在head里面</p>
+<p>zeal的使用</p>
+<p>设置语言<html lang="zh"></p>
+<p>转义字符</p>
+<p>&nbsp;&amp;gt 大于号;&lt;&amp;copy</p>
+<h2 id="meta标签中的属性"><a href="#meta标签中的属性" class="headerlink" title="meta标签中的属性"></a><strong>meta标签中的属性</strong></h2><p>content：数据的值</p>
+<p>name：数据的名称 keywords：关键字desciption 描述，显示搜索引擎的内容 </p>
+<p>title会作为搜索引擎的超链接</p>
+<p>http-equiv：refresh 将页面重定向的另外一个页面</p>
+<p>3秒后自动跳转到百度页面</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;refresh&quot;</span> <span class="attr">content</span>=<span class="string">&quot;3;url=http://www.baidu.com&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="语义化标签"><a href="#语义化标签" class="headerlink" title="语义化标签"></a>语义化标签</h1><p>h1-h6一共6级标题</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hgroup</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">hgroup</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><em></em>强调</p>
+<p><strong></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;blockquote&gt;&lt;/blockquote&gt;长引用 鲁迅说：</span><br><span class="line">&lt;q&gt;&lt;/q&gt;短引用</span><br></pre></td></tr></table></figure>
+
+<p>p标签不能放任何标签</p>
+<p>header</p>
+<p>main</p>
+<p>footer</p>
+<p>nav 网页中的导航</p>
+<p>aside侧边栏</p>
+<p>article 表示一个独立的文章</p>
+<p>section 表示独立的区块</p>
+<p>ul&gt;li</p>
+<p>ol&gt;li</p>
+<p>dl&gt;dt+dd</p>
+<p>a标签：href target </p>
+<p>href=”#bottom” 时，点击跳转到页面id为bottom的位置,只有#时，滚动到顶部</p>
+<p>href=”javascript:;” 点击什么都不做</p>
+<p>target：_self 、_blank</p>
+<h2 id="img标签"><a href="#img标签" class="headerlink" title="img标签"></a><strong>img标签</strong></h2><p>替换元素，基于行和块元素之间，但是不独占一行</p>
+<p>src属性</p>
+<p>alt对图片的描述，默认不显示，有些浏览器在图片无法加载时显示，为搜索引擎查找</p>
+<p>width</p>
+<p>height</p>
+<h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a><strong>iframe</strong></h2><p>src width height frameborder=”0”</p>
+<h2 id="audio"><a href="#audio" class="headerlink" title="audio"></a>audio</h2><p>src、</p>
+<p>controls 是否可以用户控制</p>
+<p>autoplay 自动播放，但是大多数浏览器不会自动播放</p>
+<p>loop 循环播放</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span>&gt;</span> 对不起您的浏览器不支持 <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;./xx.mp3&quot;</span> &gt;</span> <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;./xx.ogg&quot;</span> &gt;</span> <span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">embed</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/mp3&quot;</span> <span class="attr">width</span>=<span class="string">&quot;60&quot;</span> <span class="attr">height</span>=<span class="string">&quot;70&quot;</span>&gt;</span> ie8以下</span><br></pre></td></tr></table></figure>
+
+<h2 id="vedio"><a href="#vedio" class="headerlink" title="vedio"></a>vedio</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">embed</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;vedio/mp4&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">height</span>=<span class="string">&quot;200&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>]]></content>
+      <tags>
+        <tag>前端基础</tag>
       </tags>
   </entry>
 </search>
