@@ -15,7 +15,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>归档: 2021 |  杨洪建的博客</title>
+      <title>基础知识二刷之路由hash和history模式 |  杨洪建的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -46,52 +46,147 @@
       
     <main class="content on">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="post-基础知识二刷之路由hash和history模式"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">2021</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2021" class="archive-year">2021</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/02/16/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  <time datetime="2021-02-16T13:51:29.000Z" itemprop="datePublished">02/16</time>
-</a>
+    <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/02/16/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"
-    >我的第一篇博客</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  基础知识二刷之路由hash和history模式
+</h1>
  
 
+      
     </header>
-    
-    
-  </div>
-</article>
-      
-      
+     
+    <div class="article-meta">
+      <a href="/2022/04/01/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C%E5%88%B7%E4%B9%8B%E8%B7%AF%E7%94%B1hash%E5%92%8Chistory%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time datetime="2022-04-01T09:23:37.000Z" itemprop="datePublished">2022-04-01</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">381</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
-  </div>
-  
-  
+      
+    <div class="tocbot"></div>
+
+
+
 
   
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="hash模式："><a href="#hash模式：" class="headerlink" title="hash模式："></a>hash模式：</h1><p>先访问index.html物理文件去加载他</p>
+<p>然后通过html文件的hash值（也就是#后面的url路径）来匹配对应的组件</p>
+<p> 这样的模式使我们在路由跳转时能正常的跳转，并且我们如果刷新页面，也相当于访问了一次index.html他又会按照#号后面的路径重新加载路由页面</p>
+<p><strong>本质是利用了window对象的onhashchange事件来监听页面的url路径#后的hash值变化来实现动态的加载html的dom节点</strong></p>
+<h1 id="history模式："><a href="#history模式：" class="headerlink" title="history模式："></a>history模式：</h1><p>history模式中的运行原理并不是通过html文件中的锚点功能实现的</p>
+<p>他是利用js重写url路径来实现将网页的url地址动态改变而不需要重新加载页面，他的url路径一旦重写了，访问的html文件部分就会被写没，所以他的访问规则并不是默认的文件访问规则，history的访问规则需要服务器预先设定，如果我们定制好了他的规则就是固定的，</p>
+<p><strong>本质是利用history.pushState({},’标题’,path)重写url路径而不刷新页面</strong></p>
+<p>history模式是先加载本页面的基础上用js动态改变url路径，改过url路径中不包含本页的物理文件，所以会导致刷新更改后的页面，就会导致浏览器找不到原始的本页html文件，所以报404</p>
+<p>不建议使用</p>
+<p>（后续将继续补充更新）</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yanghongjian.github.io/2022/04/01/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C%E5%88%B7%E4%B9%8B%E8%B7%AF%E7%94%B1hash%E5%92%8Chistory%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">基础知识</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F/" rel="tag">路由模式</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2022/03/30/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C%E5%88%B7%E4%B9%8Bhtml/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">前端基础知识二刷之html</div>
+      </a>
+    
+  </nav>
+
+   
+ 
+   
+     
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -226,6 +321,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link

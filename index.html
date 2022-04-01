@@ -48,14 +48,9 @@
       
 <section class="cover">
     
-      
-      <a class="forkMe" href="https://github.com/Yanghongjian"
-        target="_blank"><img width="149" height="149" src="/images/forkme.png"
-          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
-    
   <div class="cover-frame">
     <div class="bg-box">
-      <img src="/images/cover1.jpg" alt="image frame" />
+      <img src="/images/cover2.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
       <h1><a href="/">杨洪建的博客</a></h1>
@@ -129,6 +124,65 @@
     
     
     
+    
+    <article
+  id="post-基础知识二刷之路由hash和history模式"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/04/01/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C%E5%88%B7%E4%B9%8B%E8%B7%AF%E7%94%B1hash%E5%92%8Chistory%E6%A8%A1%E5%BC%8F/"
+    >基础知识二刷之路由hash和history模式</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/04/01/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C%E5%88%B7%E4%B9%8B%E8%B7%AF%E7%94%B1hash%E5%92%8Chistory%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time datetime="2022-04-01T09:23:37.000Z" itemprop="datePublished">2022-04-01</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="hash模式："><a href="#hash模式：" class="headerlink" title="hash模式："></a>hash模式：</h1><p>先访问index.html物理文件去加载他</p>
+<p>然后通过html文件的hash值（也就是#后面的url路径）来匹配对应的组件</p>
+<p> 这样的模式使我们在路由跳转时能正常的跳转，并且我们如果刷新页面，也相当于访问了一次index.html他又会按照#号后面的路径重新加载路由页面</p>
+<p><strong>本质是利用了window对象的onhashchange事件来监听页面的url路径#后的hash值变化来实现动态的加载html的dom节点</strong></p>
+<h1 id="history模式："><a href="#history模式：" class="headerlink" title="history模式："></a>history模式：</h1><p>history模式中的运行原理并不是通过html文件中的锚点功能实现的</p>
+<p>他是利用js重写url路径来实现将网页的url地址动态改变而不需要重新加载页面，他的url路径一旦重写了，访问的html文件部分就会被写没，所以他的访问规则并不是默认的文件访问规则，history的访问规则需要服务器预先设定，如果我们定制好了他的规则就是固定的，</p>
+<p><strong>本质是利用history.pushState({},’标题’,path)重写url路径而不刷新页面</strong></p>
+<p>history模式是先加载本页面的基础上用js动态改变url路径，改过url路径中不包含本页的物理文件，所以会导致刷新更改后的页面，就会导致浏览器找不到原始的本页html文件，所以报404</p>
+<p>不建议使用</p>
+<p>（后续将继续补充更新）</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">基础知识</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F/" rel="tag">路由模式</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
     
     <article
   id="post-前端基础知识二刷之html"
@@ -243,7 +297,7 @@
 
     
     <article
-  id="post-myfirstblog"
+  id="post-我的第一篇博客"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -254,8 +308,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/02/16/myfirstblog/"
-    >myfirstblog</a> 
+  <a class="article-title" href="/2021/02/16/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"
+    >我的第一篇博客</a> 
 </h2>
  
 
@@ -263,14 +317,14 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/02/16/myfirstblog/" class="article-date">
-  <time datetime="2022-02-16T13:51:29.000Z" itemprop="datePublished">2022-02-16</time>
+      <a href="/2021/02/16/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time datetime="2021-02-16T13:51:29.000Z" itemprop="datePublished">2021-02-16</time>
 </a>    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>你好世界</p>
+  <p>行了，开始我的第一篇博客文档</p>
  
       <!-- reward -->
       
@@ -283,66 +337,6 @@
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8B%E8%AF%952/" rel="tag">测试2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8B%E8%AF%953/" rel="tag">测试3</a></li></ul>
 
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-hello-world"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/05/16/hello-world/"
-    >Hello World</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/05/16/hello-world/" class="article-date">
-  <time datetime="2021-05-16T05:26:57.490Z" itemprop="datePublished">2021-05-16</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
     </footer>
   </div>
 
@@ -454,10 +448,6 @@
         <i class="ri-search-line"></i>
       </a>
       
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="ri-rss-line"></i>
-      </a>
       
     </li>
   </ul>
