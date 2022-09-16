@@ -3,9 +3,9 @@
   <entry>
     <title>前端基础知识二刷之html</title>
     <url>/2022/03/30/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C%E5%88%B7%E4%B9%8Bhtml/</url>
-    <content><![CDATA[<h1 id="html的创建"><a href="#html的创建" class="headerlink" title="html的创建"></a>html的创建</h1><p>​    蒂姆伯纳斯李 万维网之父 1991 w3c 万维网联盟</p>
-<h1 id="HTML的三大部分"><a href="#HTML的三大部分" class="headerlink" title="HTML的三大部分"></a>HTML的三大部分</h1><p>​    结构html、表现css、行为js</p>
-<h1 id="html的基本结构"><a href="#html的基本结构" class="headerlink" title="html的基本结构"></a>html的基本结构</h1><p>​    html&gt;head&gt;title+body</p>
+    <content><![CDATA[<h1 id="html的创建"><a href="#html的创建" class="headerlink" title="html的创建"></a>html的创建</h1><p>​	蒂姆伯纳斯李 万维网之父 1991 w3c 万维网联盟</p>
+<h1 id="HTML的三大部分"><a href="#HTML的三大部分" class="headerlink" title="HTML的三大部分"></a>HTML的三大部分</h1><p>​	结构html、表现css、行为js</p>
+<h1 id="html的基本结构"><a href="#html的基本结构" class="headerlink" title="html的基本结构"></a>html的基本结构</h1><p>​	html&gt;head&gt;title+body</p>
 <h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><!-- -->
 
 <h1 id="标签中的属性"><a href="#标签中的属性" class="headerlink" title="标签中的属性"></a>标签中的属性</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是 <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;yellow&quot;</span> <span class="attr">size</span>=<span class="string">&quot;3&quot;</span>&gt;</span>第三个<span class="tag">&lt;/<span class="name">font</span>&gt;</span>网页<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -22,7 +22,7 @@
 <p>zeal的使用</p>
 <p>设置语言<html lang="zh"></p>
 <p>转义字符</p>
-<p>&nbsp;&amp;gt 大于号;&lt;&amp;copy</p>
+<p>&amp;nbsp;&amp;gt 大于号;&lt;&amp;copy</p>
 <h2 id="meta标签中的属性"><a href="#meta标签中的属性" class="headerlink" title="meta标签中的属性"></a><strong>meta标签中的属性</strong></h2><p>content：数据的值</p>
 <p>name：数据的名称 keywords：关键字desciption 描述，显示搜索引擎的内容 </p>
 <p>title会作为搜索引擎的超链接</p>
@@ -49,15 +49,15 @@
 <p>ol&gt;li</p>
 <p>dl&gt;dt+dd</p>
 <p>a标签：href target </p>
-<p>href=”#bottom” 时，点击跳转到页面id为bottom的位置,只有#时，滚动到顶部</p>
-<p>href=”javascript:;” 点击什么都不做</p>
+<p>href&#x3D;”#bottom” 时，点击跳转到页面id为bottom的位置,只有#时，滚动到顶部</p>
+<p>href&#x3D;”javascript:;” 点击什么都不做</p>
 <p>target：_self 、_blank</p>
 <h2 id="img标签"><a href="#img标签" class="headerlink" title="img标签"></a><strong>img标签</strong></h2><p>替换元素，基于行和块元素之间，但是不独占一行</p>
 <p>src属性</p>
 <p>alt对图片的描述，默认不显示，有些浏览器在图片无法加载时显示，为搜索引擎查找</p>
 <p>width</p>
 <p>height</p>
-<h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a><strong>iframe</strong></h2><p>src width height frameborder=”0”</p>
+<h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a><strong>iframe</strong></h2><p>src width height frameborder&#x3D;”0”</p>
 <h2 id="audio"><a href="#audio" class="headerlink" title="audio"></a>audio</h2><p>src、</p>
 <p>controls 是否可以用户控制</p>
 <p>autoplay 自动播放，但是大多数浏览器不会自动播放</p>
