@@ -126,6 +126,262 @@
     
     
     <article
+  id="post-javascript中数组的方法分类"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/09/22/javascript%E4%B8%AD%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95%E5%88%86%E7%B1%BB/"
+    >javascript中数组的方法分类</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/09/22/javascript%E4%B8%AD%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95%E5%88%86%E7%B1%BB/" class="article-date">
+  <time datetime="2022-09-22T08:15:05.000Z" itemprop="datePublished">2022-09-22</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h4 id="1、简述"><a href="#1、简述" class="headerlink" title="1、简述"></a>1、简述</h4><p>​		之前对于js中数组的了解和运用都是在工作或学习中掌握，并没有对数组的方法进行系统性的学习和总结。最近业务不是很忙，终于有时间对数组相关的知识进行归纳和总结。</p>
+<h4 id="2、内容"><a href="#2、内容" class="headerlink" title="2、内容"></a>2、内容</h4><p>​		我把数组中的方法分成以下几类</p>
+<ul>
+<li><p>创建数组的方法</p>
+</li>
+<li><p>数组操作的方法</p>
+</li>
+<li><p>数组内容查询方法</p>
+</li>
+<li><p>数组遍历方法</p>
+</li>
+<li><p>数组其他方法</p>
+<h5 id="创建数组的方法"><a href="#创建数组的方法" class="headerlink" title="创建数组的方法"></a>创建数组的方法</h5><p>new Array()</p>
+<p>[]</p>
+<p>数组操作的方法</p>
+<p>pop &#x2F;&#x2F;后删除，删除数组的最后一位元素，返回被删除的元素，改变原数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.pop()) <span class="comment">//输出[1,2,3,4]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.pop(<span class="number">7</span>,[<span class="number">8</span>,<span class="number">9</span>])) <span class="comment">//输出[1,2,3,4,5,7,[8,9]]</span></span><br></pre></td></tr></table></figure>
+
+<p>push &#x2F;&#x2F;在元素后面添加元素，返回添加后数组的长度，改变原数组，参数可以是单个值或多个值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.push(<span class="number">6</span>)) <span class="comment">//输出[1,2,3,4,5,6]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.push(<span class="number">7</span>,[<span class="number">8</span>,<span class="number">9</span>])) <span class="comment">//输出[1,2,3,4,5,6,7,[8,9]]</span></span><br></pre></td></tr></table></figure>
+
+<p>unshift &#x2F;&#x2F;在数组前面添加元素，返回添加元素的长度，改变原数组，参数可以是单个值或多个值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.unshift(<span class="number">7</span>,<span class="number">8</span>)) <span class="comment">//输出7,8,1,2,3,4</span></span><br></pre></td></tr></table></figure>
+
+<p>shift &#x2F;&#x2F;前删除，删除数组第0位的元素，返回被删除的元素，改变原数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1,2,3,4]</span><br><span class="line">console.log(arr.shift()) //[2,3,4]</span><br></pre></td></tr></table></figure>
+
+<p>reverse &#x2F;&#x2F;翻转数组的排列顺序</p>
+<p>sort &#x2F;&#x2F;对数组进行排列，默认将数组元素内容转为字符串使用unicode编码格式进行比较排序，</p>
+<p>​		&#x2F;&#x2F;参数为回调函数，默认当前项和后一项，</p>
+<p>slice &#x2F;&#x2F;删除数组中指定位置的元素</p>
+<p>splice  &#x2F;&#x2F;删除或插入指定位置的元素</p>
+</li>
+</ul>
+<p>​		</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-手写vue源码（二）"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/09/22/%E6%89%8B%E5%86%99vue%E6%BA%90%E7%A0%81%EF%BC%88%E4%BA%8C%EF%BC%89/"
+    >手写vue源码（二）-- 实现数据劫持</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/09/22/%E6%89%8B%E5%86%99vue%E6%BA%90%E7%A0%81%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-date">
+  <time datetime="2022-09-22T04:02:55.000Z" itemprop="datePublished">2022-09-22</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h4 id="1、简述"><a href="#1、简述" class="headerlink" title="1、简述"></a>1、简述</h4><p>​		本次实现数据劫持</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BA%90%E7%A0%81/" rel="tag">源码</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-手写vue源码（一）"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/09/22/%E6%89%8B%E5%86%99vue%E6%BA%90%E7%A0%81%EF%BC%88%E4%B8%80%EF%BC%89/"
+    >手写vue源码（一）-- 实现数据代理</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/09/22/%E6%89%8B%E5%86%99vue%E6%BA%90%E7%A0%81%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time datetime="2022-09-22T03:16:27.000Z" itemprop="datePublished">2022-09-22</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h4 id="1、简述"><a href="#1、简述" class="headerlink" title="1、简述"></a>1、简述</h4><p>​		本次实现vue2中数据代理的实现，数据代理就是传入vue中的参数option中的data数据项，都能在vm对象中实现，修改vm中数据属性，相应的data中的属性值也会发生变化</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">	<span class="attr">data</span>:&#123;</span><br><span class="line">        <span class="attr">a</span>:<span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.a = <span class="number">10</span></span><br><span class="line"><span class="built_in">console</span>.log(vm.data.a)<span class="comment">//输出10</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2、原理"><a href="#2、原理" class="headerlink" title="2、原理"></a>2、原理</h4><p>​		数据代理的实现依赖于Object.defineProperty方法，该方法接收3个参数，object（需要添加属性的对象），key（需要添加的属性），discriptor（属性的描述）</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> value = <span class="number">12</span></span><br><span class="line"><span class="keyword">let</span> obj = <span class="built_in">Object</span>.defineProperty(&#123;&#125;,a,&#123;</span><br><span class="line">    <span class="attr">enumerable</span>:<span class="literal">true</span>,</span><br><span class="line">    <span class="attr">configurable</span>:<span class="literal">true</span>,</span><br><span class="line">    <span class="attr">set</span>:<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">        value = val</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">get</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、实现"><a href="#3、实现" class="headerlink" title="3、实现"></a>3、实现</h4><p>下面开始编写数据代理的实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vue</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">options</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.data = options.data</span><br><span class="line">        <span class="built_in">this</span>.init()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Vue.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//获取data中的key</span></span><br><span class="line">    <span class="keyword">let</span> keys = <span class="built_in">Object</span>.keys(<span class="built_in">this</span>.data)</span><br><span class="line">    <span class="comment">//遍历data中的属性，并挂载到vue对象中</span></span><br><span class="line">    keys.forEach(<span class="function"><span class="params">key</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">Object</span>.defineProperty(<span class="built_in">this</span>,key,&#123;</span><br><span class="line">            <span class="attr">enumerable</span>:<span class="literal">true</span>,</span><br><span class="line">            <span class="attr">configurable</span>:<span class="literal">true</span>,</span><br><span class="line">            <span class="attr">get</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">this</span>.data[key]</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">set</span>:<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">                <span class="built_in">this</span>.data[key] = val</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VUE-%E6%BA%90%E7%A0%81/" rel="tag">VUE 源码</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-await和map同时使用的时候出现的坑"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/05/05/await%E5%92%8Cmap%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%E7%9A%84%E6%97%B6%E5%80%99%E5%87%BA%E7%8E%B0%E7%9A%84%E5%9D%91/"
+    >await和map同时使用的时候出现的坑</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/05/05/await%E5%92%8Cmap%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%E7%9A%84%E6%97%B6%E5%80%99%E5%87%BA%E7%8E%B0%E7%9A%84%E5%9D%91/" class="article-date">
+  <time datetime="2022-05-05T07:40:54.000Z" itemprop="datePublished">2022-05-05</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h5 id="场景回顾"><a href="#场景回顾" class="headerlink" title="场景回顾"></a>场景回顾</h5><p>今天日常搬砖，在用nodejs写一个接口，需要调用外部接口内容，获取完接口数据后，将数据作为参数传递给本地函数A进行处理。遍使用了async和await来处理调用顺序。编写完毕，就在以为一切顺利时，意外发生了。。。<br><strong>代码如下</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">let orderList = []</span><br><span class="line">let list = [XXXXX,XXXXX,XXXXXX]</span><br><span class="line">let a = list.map(async item =&gt; &#123;</span><br><span class="line">    let info = item.split(&#x27;_&#x27;)</span><br><span class="line">    if (info[3] == &#x27;0.txt&#x27;) &#123;</span><br><span class="line">        let tmp = &#123;</span><br><span class="line">            isdeal: false,</span><br><span class="line">            orderName: info[0],</span><br><span class="line">            username: info[1],</span><br><span class="line">            passwd: info[2],</span><br><span class="line">            idCards: [],</span><br><span class="line">        &#125;</span><br><span class="line">        tmp.idCards = await readFileContent(item)</span><br><span class="line">        orderList.push(tmp)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(orderList)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>期望输出[{xxxx},{xxxx},{xxxx},{xx}]</p>
+<p>竟然输出结果是[]</p>
+<p>await失效了？？</p>
+<p><strong>百试不得期果，百思不得其解！！</strong></p>
+<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p>百度老师悄悄来到我身边，低声言语了几声，我拍大腿而起。</p>
+<p>map方法其返回结果是一个数组（by the way 可以看一下map的实现，可以使用for循环或者递归来实现）。而async返回的是一个promise对象，所以上述代码执行后变量a存储的是一个promise的数组，orderList.push(tmp)没有被执行。因此需要将返回结果进行执行，orderList才能获取到正确的数据。</p>
+<p>要想解决这个问题，就执行一下返回的promise数组就可以了。</p>
+<p>能够执行promise数组的就Promise.all了，所以上述代码改为以下内容即可</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> orderList = []</span><br><span class="line"><span class="keyword">let</span> list = [XXXXX,XXXXX,XXXXXX]</span><br><span class="line"><span class="keyword">await</span> <span class="built_in">Promise</span>.all(list.map(<span class="keyword">async</span> item =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> info = item.split(<span class="string">&#x27;_&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> (info[<span class="number">3</span>] == <span class="string">&#x27;0.txt&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> tmp = &#123;</span><br><span class="line">            <span class="attr">isdeal</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">orderName</span>: info[<span class="number">0</span>],</span><br><span class="line">            <span class="attr">username</span>: info[<span class="number">1</span>],</span><br><span class="line">            <span class="attr">passwd</span>: info[<span class="number">2</span>],</span><br><span class="line">            <span class="attr">idCards</span>: [],</span><br><span class="line">        &#125;</span><br><span class="line">        tmp.idCards = <span class="keyword">await</span> readFileContent(item)</span><br><span class="line">        orderList.push(tmp)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;))</span><br><span class="line"><span class="built_in">console</span>.log(orderList)</span><br></pre></td></tr></table></figure>
+
+<p>又或者别写装X代码，直接for循环</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> orderList = []</span><br><span class="line"><span class="keyword">let</span> list = [XXXXX,XXXXX,XXXXXX]</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> info = list[i].split(<span class="string">&#x27;_&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> (info[<span class="number">3</span>] == <span class="string">&#x27;0.txt&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> tmp = &#123;</span><br><span class="line">            <span class="attr">isdeal</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">orderName</span>: info[<span class="number">0</span>],</span><br><span class="line">            <span class="attr">loginid</span>: info[<span class="number">1</span>],</span><br><span class="line">            <span class="attr">passwd</span>: info[<span class="number">2</span>],</span><br><span class="line">            <span class="attr">idCards</span>: [],</span><br><span class="line">        &#125;</span><br><span class="line">        tmp.idCards = <span class="keyword">await</span> readFileContent(list[i])</span><br><span class="line">        orderList.push(tmp)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(orderList)</span><br></pre></td></tr></table></figure>
+
+<p>当然，这不是坑，是我菜。。。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-基础知识二刷之路由hash和history模式"
   class="article article-type-post"
   itemscope
@@ -358,7 +614,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2021-2022
+        2021-2023
         <i class="ri-heart-fill heart_icon"></i> Hankin Yang
       </li>
     </ul>

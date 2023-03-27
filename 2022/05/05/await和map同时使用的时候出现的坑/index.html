@@ -15,7 +15,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>生活 |  杨洪建的博客</title>
+      <title>await和map同时使用的时候出现的坑 |  杨洪建的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -47,8 +47,8 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="page-"
-  class="article article-type-page"
+  id="post-await和map同时使用的时候出现的坑"
+  class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
@@ -58,16 +58,64 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  生活
+  await和map同时使用的时候出现的坑
 </h1>
  
 
       
     </header>
-       
+     
+    <div class="article-meta">
+      <a href="/2022/05/05/await%E5%92%8Cmap%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%E7%9A%84%E6%97%B6%E5%80%99%E5%87%BA%E7%8E%B0%E7%9A%84%E5%9D%91/" class="article-date">
+  <time datetime="2022-05-05T07:40:54.000Z" itemprop="datePublished">2022-05-05</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">504</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">2 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <h5 id="场景回顾"><a href="#场景回顾" class="headerlink" title="场景回顾"></a>场景回顾</h5><p>今天日常搬砖，在用nodejs写一个接口，需要调用外部接口内容，获取完接口数据后，将数据作为参数传递给本地函数A进行处理。遍使用了async和await来处理调用顺序。编写完毕，就在以为一切顺利时，意外发生了。。。<br><strong>代码如下</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">let orderList = []</span><br><span class="line">let list = [XXXXX,XXXXX,XXXXXX]</span><br><span class="line">let a = list.map(async item =&gt; &#123;</span><br><span class="line">    let info = item.split(&#x27;_&#x27;)</span><br><span class="line">    if (info[3] == &#x27;0.txt&#x27;) &#123;</span><br><span class="line">        let tmp = &#123;</span><br><span class="line">            isdeal: false,</span><br><span class="line">            orderName: info[0],</span><br><span class="line">            username: info[1],</span><br><span class="line">            passwd: info[2],</span><br><span class="line">            idCards: [],</span><br><span class="line">        &#125;</span><br><span class="line">        tmp.idCards = await readFileContent(item)</span><br><span class="line">        orderList.push(tmp)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(orderList)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>期望输出[{xxxx},{xxxx},{xxxx},{xx}]</p>
+<p>竟然输出结果是[]</p>
+<p>await失效了？？</p>
+<p><strong>百试不得期果，百思不得其解！！</strong></p>
+<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p>百度老师悄悄来到我身边，低声言语了几声，我拍大腿而起。</p>
+<p>map方法其返回结果是一个数组（by the way 可以看一下map的实现，可以使用for循环或者递归来实现）。而async返回的是一个promise对象，所以上述代码执行后变量a存储的是一个promise的数组，orderList.push(tmp)没有被执行。因此需要将返回结果进行执行，orderList才能获取到正确的数据。</p>
+<p>要想解决这个问题，就执行一下返回的promise数组就可以了。</p>
+<p>能够执行promise数组的就Promise.all了，所以上述代码改为以下内容即可</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> orderList = []</span><br><span class="line"><span class="keyword">let</span> list = [XXXXX,XXXXX,XXXXXX]</span><br><span class="line"><span class="keyword">await</span> <span class="built_in">Promise</span>.all(list.map(<span class="keyword">async</span> item =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> info = item.split(<span class="string">&#x27;_&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> (info[<span class="number">3</span>] == <span class="string">&#x27;0.txt&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> tmp = &#123;</span><br><span class="line">            <span class="attr">isdeal</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">orderName</span>: info[<span class="number">0</span>],</span><br><span class="line">            <span class="attr">username</span>: info[<span class="number">1</span>],</span><br><span class="line">            <span class="attr">passwd</span>: info[<span class="number">2</span>],</span><br><span class="line">            <span class="attr">idCards</span>: [],</span><br><span class="line">        &#125;</span><br><span class="line">        tmp.idCards = <span class="keyword">await</span> readFileContent(item)</span><br><span class="line">        orderList.push(tmp)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;))</span><br><span class="line"><span class="built_in">console</span>.log(orderList)</span><br></pre></td></tr></table></figure>
+
+<p>又或者别写装X代码，直接for循环</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> orderList = []</span><br><span class="line"><span class="keyword">let</span> list = [XXXXX,XXXXX,XXXXXX]</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> info = list[i].split(<span class="string">&#x27;_&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> (info[<span class="number">3</span>] == <span class="string">&#x27;0.txt&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> tmp = &#123;</span><br><span class="line">            <span class="attr">isdeal</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">orderName</span>: info[<span class="number">0</span>],</span><br><span class="line">            <span class="attr">loginid</span>: info[<span class="number">1</span>],</span><br><span class="line">            <span class="attr">passwd</span>: info[<span class="number">2</span>],</span><br><span class="line">            <span class="attr">idCards</span>: [],</span><br><span class="line">        &#125;</span><br><span class="line">        tmp.idCards = <span class="keyword">await</span> readFileContent(list[i])</span><br><span class="line">        orderList.push(tmp)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(orderList)</span><br></pre></td></tr></table></figure>
+
+<p>当然，这不是坑，是我菜。。。</p>
+ 
       <!-- reward -->
       
     </div>
@@ -119,7 +167,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yanghongjian.github.io/life/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yanghongjian.github.io/2022/05/05/await%E5%92%8Cmap%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%E7%9A%84%E6%97%B6%E5%80%99%E5%87%BA%E7%8E%B0%E7%9A%84%E5%9D%91/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -128,9 +176,29 @@
   </div>
 
    
+  <nav class="article-nav">
+    
+      <a href="/2022/09/22/%E6%89%8B%E5%86%99vue%E6%BA%90%E7%A0%81%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            手写vue源码（一）-- 实现数据代理
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/04/01/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C%E5%88%B7%E4%B9%8B%E8%B7%AF%E7%94%B1hash%E5%92%8Chistory%E6%A8%A1%E5%BC%8F/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">基础知识二刷之路由hash和history模式</div>
+      </a>
+    
+  </nav>
+
    
  
-    
+   
+     
 </article>
 
 </section>
@@ -267,6 +335,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link
